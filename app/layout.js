@@ -20,6 +20,11 @@ export const metadata = {
   title: "Kingdom of English | IELTS, PTE & German Visa – Marawila",
   description:
     "Marawila's premier institute for IELTS, PTE, Spoken English, School English, and German Visa Facilitation.",
+  icons: {
+    icon: '/favicon.ico', // <-- Add this line
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 const navLinks = [
