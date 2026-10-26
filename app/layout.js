@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
                   {link.label}
                 </Link>
               ))}
-              <a href="tel:+94771234567" className="btn-gold !py-2 !px-4 text-sm">
+              <a href="tel:+94764017185" className="btn-gold !py-2 !px-4 text-sm">
                 📞 Call Now
               </a>
             </nav>
@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
               >
                 💬
               </a>
-              <a href="tel:+94771234567" className="text-2xl">
+              <a href="tel:+94764017185" className="text-2xl">
                 📞
               </a>
             </div>

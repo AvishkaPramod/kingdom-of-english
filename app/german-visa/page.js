@@ -284,7 +284,7 @@ export default function GermanVisaPage() {
               📞 Book Free Consultation
             </Link>
             <a
-              href="https://wa.me/94771234567"
+              href="https://wa.me/94764017185"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-royal-900 font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 transition"
