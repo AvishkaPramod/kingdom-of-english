@@ -1,8 +1,12 @@
+"use client"; // <-- Required for the mobile menu to open/close
+
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa"; 
+import { FaFacebook } from "react-icons/fa";
+import { useState } from "react"; // <-- Import useState
+import MobileMenu from "@/components/layout/MobileMenu"; // <-- Import the menu
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -16,23 +20,6 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-export const metadata = {
-  title: "Kingdom of English | IELTS, PTE & German Visa – Marawila",
-  description:
-    "Marawila's premier institute for IELTS, PTE, Spoken English, School English, and German Visa Facilitation.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    shortcut: ["/favicon.ico"],
-  },
-};
-
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -42,6 +29,9 @@ const navLinks = [
 ];
 
 export default function RootLayout({ children }) {
+  // State to control the mobile menu
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
       <body className="antialiased">
@@ -61,6 +51,7 @@ export default function RootLayout({ children }) {
               </span>
             </Link>
 
+            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
                 <Link
@@ -76,20 +67,18 @@ export default function RootLayout({ children }) {
               </a>
             </nav>
 
-            <div className="md:hidden flex gap-3">
-              <a
-                href="https://wa.me/94764017185"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl"
-              >
-                💬
-              </a>
-              <a href="tel:+94764017185" className="text-2xl">
-                📞
-              </a>
-            </div>
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="md:hidden text-3xl text-royal-900 focus:outline-none"
+              aria-label="Open menu"
+            >
+              ☰
+            </button>
           </div>
+          
+          {/* Mobile Menu Component */}
+          <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
         </header>
 
         <main>{children}</main>
@@ -98,7 +87,7 @@ export default function RootLayout({ children }) {
         <footer className="bg-royal-900 text-white pt-16 pb-8">
           <div className="container-custom grid md:grid-cols-3 gap-10">
             <div>
-                            <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="bg-white p-1 rounded-md">
                   <Image 
                     src="/logo.jpg" 
@@ -156,15 +145,15 @@ export default function RootLayout({ children }) {
                     kingdomofenglish18@gmail.com
                   </a>
                 </li>
-                <li>
+                <li className="pt-2">
                   <a
-                      href="https://www.facebook.com/share/19vyJSEHwc/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-[#1877F2] text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                    >
-                      <FaFacebook size={20} />
-                      Follow on Facebook
+                    href="https://www.facebook.com/share/19vyJSEHwc/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#1877F2] text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  >
+                    <FaFacebook size={20} />
+                    Follow on Facebook
                   </a>
                 </li>
               </ul>
